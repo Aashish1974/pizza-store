@@ -36,15 +36,20 @@ let mongoStore = new MongoDbStore({
      resave: false,
      store: mongoStore,
      saveUninitialized: false,
-     cookie:{maxAge:  1000 * 60 * 60 * 24 } //24 hours
- 
+     cookie:{maxAge:  1000 * 60 * 60 * 24 } //24 hours  
  }));
 
 app.use(flash())
 
 //Assets
 app.use(express.static('public'));
+app.use(express.json());
 
+//Global middleware
+app.use((req,res,next)=>{
+  res.locals.session = req.session
+  next()
+})
 // set template engine
 app.use(expressLayouts);
 app.set('views', path.join(__dirname, '/resources/views'));
