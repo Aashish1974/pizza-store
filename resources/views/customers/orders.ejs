@@ -1,4 +1,4 @@
-<section class="orders light-section">
+<section class="orders light-section px-11 py-4">
     <div class="container mx-auto pt-12">
         <h1 class="font-bold text-lg mb-4">All orders</h1>
         <% if(messages.success) { %>
@@ -25,7 +25,7 @@
                 <% orders.forEach((order) => { %>
                 <tr>
                     <td class="border px-4 py-2">
-                        <a class="link" href="/customer/orders/<%= order._id %>"><%= order._id %></a>
+                        <a class="link" href="/customers/orders/<%= order._id %>"><%= order._id %></a>
                     </td>
                     <td class="border px-4 py-2">
                         <%= order.phone %>
